@@ -1,5 +1,6 @@
 # AI-Supply-Chain-Optimizer
 PirateCart is an intelligent supply chain management system designed for internal company use. It combines traditional inventory and order management with modern AI forecasting, smart alerts, and supplier intelligence.
+
 🔐 1. Authentication & Roles
 Secure login/signup for admins and managers.
    -Role-based dashboard access (user sessions maintained via Flask session).

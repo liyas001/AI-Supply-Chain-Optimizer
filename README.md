@@ -5,6 +5,7 @@ PirateCart is an intelligent supply chain management system designed for interna
 Secure login/signup for admins and managers.
    -Role-based dashboard access (user sessions maintained via Flask session).
    -Stored in a secure users table with hashed passwords.
+
 📦 2. Product Management
    -View all available products from the Products table.
    -Add new products directly via order forms (auto-generates SKU and assigns category).

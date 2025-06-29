@@ -1,0 +1,59 @@
+{% extends 'dashboard.html' %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-3">Welcome, {{ user.username }} 👋</h2>
+    <p class="lead">Your AI-Powered Supply Chain Optimizer dashboard.</p>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
+        <div class="col">
+            <a href="{{ url_for('products') }}" class="text-decoration-none text-dark">
+                <div class="card shadow-sm h-100 text-center">
+                    <div class="card-body">
+                        <div class="display-4">📦</div>
+                        <h5 class="card-title mt-2">Products</h5>
+                        <p class="card-text">Manage and view product data.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <a href="{{ url_for('suppliers') }}" class="text-decoration-none text-dark">
+                <div class="card shadow-sm h-100 text-center">
+                    <div class="card-body">
+                        <div class="display-4">🚚</div>
+                        <h5 class="card-title mt-2">Suppliers</h5>
+                        <p class="card-text">Check supplier ratings and performance.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <a href="{{ url_for('forecast') }}" class="text-decoration-none text-dark">
+                <div class="card shadow-sm h-100 text-center">
+                    <div class="card-body">
+                        <div class="display-4">📈</div>
+                        <h5 class="card-title mt-2">Forecast</h5>
+                        <p class="card-text">Generate demand forecasts.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <a href="{{ url_for('alerts') }}" class="text-decoration-none text-dark">
+                <div class="card shadow-sm h-100 text-center">
+                    <div class="card-body">
+                        <div class="display-4">⚠️</div>
+                        <h5 class="card-title mt-2">Alerts</h5>
+                        <p class="card-text">Review important alerts.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- Add more cards here for inventory, orders, etc. -->
+    </div>
+</div>
+{% endblock %}
+
+

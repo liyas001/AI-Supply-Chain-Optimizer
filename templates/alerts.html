@@ -1,0 +1,39 @@
+{% extends 'dashboard.html' %}
+{% block title %}Alerts{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">⚠️ Alerts</h2>
+
+    {% if alerts %}
+    <div class="table-responsive">
+        <table class="table table-striped table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Type</th>
+                    <th>Message</th>
+                    <th>Product</th>
+                    <th>Warehouse</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for alert in alerts %}
+                <tr>
+                    <td>{{ alert.type }}</td>
+                    <td>{{ alert.message }}</td>
+                    <td>{{ alert.product_name }}</td>
+                    <td>{{ alert.warehouse_name }}</td>
+                    <td>{{ alert.date }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="alert alert-info" role="alert">
+        No alerts to display.
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

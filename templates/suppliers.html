@@ -1,0 +1,29 @@
+{% extends 'dashboard.html' %}
+{% block title %}Suppliers{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">🚚 Suppliers</h2>
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered align-middle">
+        <thead class="table-dark text-center">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for supplier in suppliers %}
+            <tr class="text-center">
+                <td>{{ supplier.supplier_id }}</td>
+                <td>{{ supplier.name }}</td>
+                <td>{{ supplier.location }}</td>
+                <td>{{ supplier.rating }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

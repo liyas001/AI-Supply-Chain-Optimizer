@@ -1,0 +1,29 @@
+{% extends 'dashboard.html' %}
+{% block title %}Supplier Ratings{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">⭐ Supplier Ratings</h2>
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered align-middle">
+        <thead class="table-dark text-center">
+            <tr>
+                <th>Supplier ID</th>
+                <th>On-Time Rate (%)</th>
+                <th>Delays</th>
+                <th>Recommendation</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for rating in ratings %}
+            <tr class="text-center">
+                <td>{{ rating.supplier_id }}</td>
+                <td>{{ rating.on_time_rate }}</td>
+                <td>{{ rating.delay_count }}</td>
+                <td>{{ rating.recommendation }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

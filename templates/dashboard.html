@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Dashboard | PirateCart{% endblock %}</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+    }
+
+    .topbar {
+      background-color: #fff;
+      padding: 0.7rem 2rem;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: #0b2447;
+      text-decoration: none;
+    }
+
+    .navbar-brand img {
+      height: 48px;
+      margin-right: 12px;
+    }
+
+    .sidebar {
+      background-color: #1a1a2e;
+      width: 240px;
+      height: 100vh;
+      position: fixed;
+      top: 70px;
+      left: 0;
+      padding-top: 20px;
+      overflow-y: auto;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 15px 20px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .sidebar a:hover {
+      background-color: #16213e;
+    }
+
+    .content {
+      margin-left: 240px;
+      padding: 30px;
+      padding-top: 100px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      text-align: center;
+      border-radius: 16px;
+      padding: 30px;
+      background: white;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .card img {
+      max-width: 100px;
+      margin-bottom: 20px;
+    }
+
+    .card a {
+      font-weight: bold;
+      color: #007bff;
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+
+    .card a:hover {
+      text-decoration: underline;
+      color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Top Navbar -->
+<div class="topbar">
+  <a class="navbar-brand" href="{{ url_for('dashboard') }}">
+    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="PirateCart Logo">
+    PirateCart
+  </a>
+</div>
+
+<!-- Sidebar -->
+<div class="sidebar">
+  <a href="{{ url_for('dashboard') }}">🏠 Dashboard</a>
+  <a href="{{ url_for('products') }}">📦 Products</a>
+  <a href="{{ url_for('warehouses') }}">🏢 Warehouses</a>
+  <a href="{{ url_for('inventory') }}">📊 Inventory</a>
+  <a href="{{ url_for('suppliers') }}">🚚 Suppliers</a>
+  <a href="{{ url_for('orders') }}">🧾 Orders</a>
+  <a href="{{ url_for('shipments') }}">📦 Shipments</a>
+  <a href="{{ url_for('supplier_ratings') }}">⭐ Ratings</a>
+  <a href="{{ url_for('forecast') }}">📈 Forecast</a>
+  <a href="{{ url_for('alerts') }}">🚨 Alerts</a>
+  <a href="{{ url_for('customer_orders') }}">🧍 Customer Orders</a>
+  <a href="{{ url_for('logout') }}">🚪 Logout</a>
+</div>
+
+<!-- Main Content -->
+<div class="content">
+  <h2>Welcome, {{ user.username if user else "User" }} 👋</h2>
+
+  {% block content %}
+  <div class="card-grid">
+    <div class="card">
+      <img src="{{ url_for('static', filename='images/product.png') }}" alt="Products">
+      <a href="{{ url_for('products') }}">Products</a>
+    </div>
+    <div class="card">
+      <img src="{{ url_for('static', filename='images/warehouse.png') }}" alt="Warehouses">
+      <a href="{{ url_for('warehouses') }}">Warehouses</a>
+    </div>
+    <div class="card">
+      <img src="{{ url_for('static', filename='images/inventory.png') }}" alt="Inventory">
+      <a href="{{ url_for('inventory') }}">Inventory</a>
+    </div>
+    <div class="card">
+      <img src="{{ url_for('static', filename='images/suppliers.jpeg') }}" alt="Suppliers">
+      <a href="{{ url_for('suppliers') }}">Suppliers</a>
+    </div>
+    <div class="card">
+      <img src="{{ url_for('static', filename='images/orders 2.png') }}" alt="Orders">
+      <a href="{{ url_for('orders') }}">Orders</a>
+    </div>
+    <div class="card">
+      <img src="{{ url_for('static', filename='images/shipping.jpeg') }}" alt="Shipments">
+      <a href="{{ url_for('shipments') }}">Shipments</a>
+    </div>
+    <div class="card">
+      <img src="{{ url_for('static', filename='images/rating.png') }}" alt="Ratings">
+      <a href="{{ url_for('supplier_ratings') }}">Supplier Ratings</a>
+    </div>
+    <div class="card">
+      <img src="{{ url_for('static', filename='images/forecast.png') }}" alt="Forecast">
+      <a href="{{ url_for('forecast') }}">Forecast</a>
+    </div>
+    <div class="card">
+      <img src="{{ url_for('static', filename='images/alert.jpg') }}" alt="Alerts">
+      <a href="{{ url_for('alerts') }}">Alerts</a>
+    </div>
+    <div class="card">
+      <img src="{{ url_for('static', filename='images/orders.png') }}" alt="Customer Orders">
+      <a href="{{ url_for('customer_orders') }}">Customer Orders</a>
+    </div>
+  </div>
+  {% endblock %}
+</div>
+
+</body>
+</html>

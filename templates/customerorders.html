@@ -1,0 +1,42 @@
+{% extends 'dashboard.html' %}
+{% block title %}Customer Orders{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-3">Customer Orders</h2>
+
+    {% if orders %}
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customer Name</th>
+                    <th>Product</th>
+                    <th>Location</th>
+                    <th>Quantity</th>
+                    <th>Warehouse</th>
+                    <th>Order Date</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                <tr>
+                    <td>{{ order.order_id }}</td>
+                    <td>{{ order.customer_name }}</td>
+                    <td>{{ order.product_name }}</td>
+                    <td>{{ order.location }}</td>
+                    <td>{{ order.quantity }}</td>
+                    <td>{{ order.warehouse_name }}</td>
+                    <td>{{ order.order_date }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+        <p class="text-muted">No customer orders available.</p>
+    {% endif %}
+</div>
+{% endblock %}

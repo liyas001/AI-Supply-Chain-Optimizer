@@ -1,0 +1,27 @@
+{% extends 'dashboard.html' %}
+{% block title %}Warehouses{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">🏢 Warehouses</h2>
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered align-middle">
+        <thead class="table-dark text-center">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Location</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for warehouse in warehouses %}
+            <tr class="text-center">
+                <td>{{ warehouse.warehouse_id }}</td>
+                <td>{{ warehouse.name }}</td>
+                <td>{{ warehouse.location }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
